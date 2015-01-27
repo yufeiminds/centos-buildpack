@@ -1,6 +1,8 @@
 #!/bin/bash  
 
 # system packages
+
+tips "Pre-Install c lib"
 yum -y install python-devel openssl openssl-devel gcc sqlite sqlite-devel mysql-
 devel libxml2-devel libxslt-devel  
 
@@ -15,7 +17,8 @@ ln -s /usr/local/python2.7/lib/libpython2.7.so.1.0 /usr/lib
 ln -s /usr/local/python2.7/bin/python2.7 /usr/bin  
 
 # Fix the bug that yum not working on python2.7
-rm /usr/bin/python
+mv /usr/bin/python /usr/bin/python_origin
+cp /usr/bin/python_origin /usr/bin/python2.6
 ln -s /usr/bin/python2.7 /usr/bin/python  
 sed -i '1 s/python$/python2.6/g' /usr/bin/yum
 /sbin/ldconfig -v
@@ -34,8 +37,7 @@ pip install mysql-python ipython requests readline beautifulsoup4 html5lib
 ln -s /usr/local/python2.7/bin/ipython /usr/bin  
 
 # Done
-echo rm dirs
 rm Python-2.7.9 Python-2.7.9.tgz -r -f 
 rm distribute-0.6.9 distribute-0.6.9.tar.gz -r -f
-echo Finish Install
+tips "Finish Install"
 python2.7 -V
