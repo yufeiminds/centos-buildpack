@@ -29,12 +29,10 @@ wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.9.tar.gz
 tar xf distribute-0.6.9.tar.gz  
 cd distribute-0.6.9  
 python2.7 setup.py install  
-/usr/local/python2.7/bin/easy_install pip  
-ln -s /usr/local/python2.7/bin/pip /usr/bin  
+easy_install-2.7 pip
 
 # preinstall packages 
 pip install mysql-python ipython requests readline beautifulsoup4 html5lib  
-ln -s /usr/local/python2.7/bin/ipython /usr/bin  
 
 # Done
 rm Python-2.7.9 Python-2.7.9.tgz -r -f 
